@@ -56,23 +56,23 @@ class AstronomyContainerReact extends React.Component {
 //redux refactor
 class AstronomyContainer extends React.Component {
 
-    componentWillMount() {
+	componentWillMount() {
         this.props.fetchData();
-        //console.log(this.props.astronomy);
-    }
+        console.log(this.props.astronomy);
+	}
 
-    render() {
-        return (
-            <AstronomyCard data={this.props.astronomy} />
-        );
-    }
+	render() {
+		return (
+			<AstronomyCard data={this.props.astronomy} />
+		);
+	}
 }
 
-//connect with redux
-//@params mapStateToProps           (necessity)
-//@params mapDispatchToProps        this is the action (optional)
-function mapStateToProps(state) {
-    return {astronomy: state.astronomy};
+// connect react with redux
+// @params mapStateToProps (necessity)
+// @params mapDispatchToProps (optional)
+const mapStateToProps = (state) => {
+	return { astronomy: state.astronomy };
 }
 
-export default connect(mapStateToProps, { fetchData })(AstronomyContainer);
+export default connect(mapStateToProps, {fetchData})(AstronomyContainer);

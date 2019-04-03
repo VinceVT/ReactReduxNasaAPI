@@ -9,6 +9,7 @@ export default function fetchData() {
     const request1 = fetch(url).then(response => { return response.json() });
     
     const request = axios.get(url);
+    console.log(request);
     
     return { //returns plain object with props
         type: 'FETCH_DATA',     //action type
