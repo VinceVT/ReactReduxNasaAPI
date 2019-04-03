@@ -1,7 +1,7 @@
 import React from 'react';
 
 const AstronomyCard = (props) => {
-    const {title, url, hdurl, explanation, date, copyright} = props.data;
+    const {title, url, hdurl, explanation, date, copyright, media_type} = props.data;
 
     function renderContent() {
 		switch(media_type) {
@@ -16,14 +16,14 @@ const AstronomyCard = (props) => {
     			</iframe>
 				)
 
-				case('image'):
-					return (
-						<a href={hdurl} className="astronomy-image-wrapper">
-								<img src={url} alt={title} />
-						</a>
-		    	)
-		    	default:
-		    		return null
+			case('image'):
+				return (
+				<a href={hdurl} className="astronomy-image-wrapper">
+						<img src={url} alt={title}/>
+				</a>
+			)
+			default:
+				return null
 		}
 	}
 
@@ -32,18 +32,14 @@ const AstronomyCard = (props) => {
 
 			<h6 className="astronomy-title">{title}</h6>
 
-             {<a href={hdurl} className="astronomy-image-wrapper">
-                <img src={url} alt={title}/>
-            </a>}
+            {renderContent()}
 
-            {//renderContent}
-            }
 			<p>{explanation}</p>
 
 			<span>{date}, {copyright}</span>
 
 		</div>
-    )
+	)
 }
 
 export default AstronomyCard;
